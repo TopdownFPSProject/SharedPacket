@@ -1,7 +1,7 @@
 ﻿using MessagePack;
 using System.Collections.Generic;
 
-namespace SharedPacketLib
+namespace SharedPacket
 {
     [MessagePackObject]
     [Union(0, typeof(C_InputPacket))]
@@ -64,11 +64,7 @@ namespace SharedPacketLib
         [Key(4)]
         public float Z { get; set; }
         [Key(5)]
-        public float LX { get; set; }
-        [Key(6)]
-        public float LY { get; set; }
-        [Key(7)]
-        public float LZ { get; set; }
+        public float Angle { get; set; }
     }
 
 
@@ -90,11 +86,7 @@ namespace SharedPacketLib
         [Key(4)]
         public float Z { get; set; }
         [Key(5)]
-        public float LX { get; set; }
-        [Key(6)]
-        public float LY { get; set; }
-        [Key(7)]
-        public float LZ { get; set; }
+        public float Angle { get; set; }
 
     }
 
@@ -137,10 +129,6 @@ namespace SharedPacketLib
         [Key(3)]
         public float Z { get; set; }
         [Key(5)]
-        public float LX { get; set; }
-        [Key(6)]
-        public float LY { get; set; }
-        [Key(7)]
-        public float LZ { get; set; }
+        public float Angle { get; set; }
     }
 }

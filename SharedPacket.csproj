@@ -11,13 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="SharedPacketLib">
-      <HintPath>obj\Debug\netstandard2.0\SharedPacketLib.dll</HintPath>
+    <Reference Include="SharedPacket">
+      <HintPath>obj\Debug\netstandard2.0\SharedPacket.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;D:\heejae\Client\Assets\Plugins\SharedPacketLib.dll&quot;" />
+    <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;D:\heejae\Client\Assets\Plugins\SharedPacket.dll&quot;" />
   </Target>
 
 </Project>
