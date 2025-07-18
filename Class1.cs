@@ -10,6 +10,10 @@ namespace SharedPacket
     [Union(3, typeof(C_ConnectPacket))]
     [Union(4, typeof(C_DisconnectPacket))]
     [Union(5, typeof(C_PositionPacket))]
+    [Union (6, typeof(S_bulletPacket))]
+    [Union (7, typeof(C_FirePacket))]
+    [Union (8, typeof(C_HitPacket))]
+    [Union (9, typeof(S_HitInfoPacket))]
     public abstract class PacketBase
     {
         [Key(0)]
@@ -67,6 +71,46 @@ namespace SharedPacket
         public float Angle { get; set; }
     }
 
+    [MessagePackObject]
+    public class S_bulletPacket : PacketBase
+    {
+        public S_bulletPacket()
+        {
+            Command = "bullet";
+        }
+
+        [Key(1)]
+        public string Id { get; set; }
+        [Key(2)]
+        public float X { get; set; }
+        [Key(3)]
+        public float Y { get; set; }
+        [Key(4)]
+        public float Z { get; set; }
+        [Key(5)]
+        public float Angle { get; set; }
+        [Key(6)]
+        public long SpawnTime { get; set; }
+    }
+
+    [MessagePackObject]
+    public class S_HitInfoPacket : PacketBase
+    {
+        public S_HitInfoPacket()
+        {
+            Command = "hitInfo";
+        }
+
+        [Key(1)]
+        public string shooter { get; set; }
+        [Key(2)]
+        public string target { get; set; }
+        [Key(3)]
+        public float damage { get; set; }
+
+        // 추가적인 피격 처리는 나중에
+    }
+
 
     //클라 -> 서버(C_***)
     [MessagePackObject]
@@ -114,6 +158,44 @@ namespace SharedPacket
         [Key(1)]
         public string Id { get; set; }
     }
+
+    [MessagePackObject]
+    public class C_FirePacket : PacketBase
+    {
+        public C_FirePacket()
+        {
+            Command = "fire";
+        }
+
+        [Key(1)]
+        public string Id { get; set; }
+        [Key(2)]
+        public float X { get; set; }
+        [Key(3)]
+        public float Y { get; set; }
+        [Key(4)]
+        public float Z { get; set; }
+        [Key(5)]
+        public float Angle { get; set; }
+        [Key(6)]
+        public long SpawnTime { get; set; }
+    }
+
+    [MessagePackObject]
+    public class C_HitPacket : PacketBase
+    {
+        public C_HitPacket()
+        {
+            Command = "Hit";
+        }
+        [Key(1)]
+        public string shooter { get; set; }
+        [Key(2)]
+        public string target { get; set; }
+        [Key(3)]
+        public long spawnedTime { get; set; }
+    }
+
 
 
     //기타 정보
